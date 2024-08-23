@@ -1,42 +1,42 @@
-'use strict';
+"use strict";
 
-const getDocumentationUrl = require('../utils/get-documentation-url');
+const getDocumentationUrl = require("../utils/get-documentation-url");
 
 const ignoreFileRE = /^\s*istanbul\s+ignore\s+file(?=\W|$)/u;
 
 module.exports = {
-	meta: {
-		docs: {
-			url: getDocumentationUrl('no-ignore-file'),
-			category: 'Best Practices',
-			description:
-				'This rule raises a warning about "istanbul ignore file" comments.',
-			recommended: false
-		},
-		messages: {
-			ignoreFile: 'Prefer config for ignoring files'
-		},
-		schema: [],
-		type: 'suggestion'
-	},
-	defaultOptions: [],
-	create(context) {
-		const sourceCode = context.getSourceCode();
+  meta: {
+    docs: {
+      url: getDocumentationUrl("no-ignore-file"),
+      category: "Best Practices",
+      description:
+        'This rule raises a warning about "istanbul ignore file" comments.',
+      recommended: false,
+    },
+    messages: {
+      ignoreFile: "Prefer config for ignoring files",
+    },
+    schema: [],
+    type: "suggestion",
+  },
+  defaultOptions: [],
+  create(context) {
+    const sourceCode = context.getSourceCode();
 
-		function checkNode(node) {
-			if (!ignoreFileRE.test(node.value)) {
-				return;
-			}
+    function checkNode(node) {
+      if (!ignoreFileRE.test(node.value)) {
+        return;
+      }
 
-			context.report({messageId: 'ignoreFile', node});
-		}
+      context.report({ messageId: "ignoreFile", node });
+    }
 
-		return {
-			Program() {
-				const comments = sourceCode.getAllComments();
+    return {
+      Program() {
+        const comments = sourceCode.getAllComments();
 
-				comments.forEach(comment => checkNode(comment));
-			}
-		};
-	}
+        comments.forEach((comment) => checkNode(comment));
+      },
+    };
+  },
 };
