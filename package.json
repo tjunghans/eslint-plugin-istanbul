@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-istanbul",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "ESLint plugin for istanbul code coverage",
   "license": "MIT",
   "main": "index.js",
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/istanbuljs/eslint-plugin-istanbul#readme",
   "engines": {
-   "node": "^12.22.0 || ^14.17.0 || >= 16.0.0"
+    "node": "^12.22.0 || ^14.17.0 || >= 16.0.0"
   },
   "keywords": [
     "eslint",
